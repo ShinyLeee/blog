@@ -1,0 +1,12 @@
+siteTitle = "Blog by ShinyLee"
+siteDescr = "搞前端的，玩爱玩的。"
+siteAuthor = "ShinyLee"
+
+siteTwitterUrl = "https://twitter.com/shinylee007"
+siteGithubUrl = "https://github.com/ShinyLeee"
+siteEmailUrl = "lshinylee007@gmail.com"
+
+googleAnalyticsId = ""
+
+# use for depolying to Production environment
+linkPrefix = "/blog"
