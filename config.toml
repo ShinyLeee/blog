@@ -9,4 +9,4 @@ siteEmailUrl = "lshinylee007@gmail.com"
 googleAnalyticsId = ""
 
 # use for depolying to Production environment
-linkPrefix = "/shinyleee.github.io"
+linkPrefix = "/blog"
