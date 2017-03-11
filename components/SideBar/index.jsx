@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { prefixLink } from 'gatsby-helpers'; // eslint-disable-line
 import { config } from 'config'; // eslint-disable-line
-import SiteNav from '../SiteNav';
-import SiteLinks from '../SiteLinks';
-import SiteFooter from '../SiteFooter';
-import './style.css';
+import SideBarNav from '../SideBarNav';
+import SideBarLinks from '../SideBarLinks';
+import SideBarFooter from '../SideBarFooter';
 import avatarPic from '../../pages/avatar.jpeg';
 
-class SiteSidebar extends React.Component {
+import './style.css';
+
+class SiteSidebar extends Component {
   render() {
     const { location } = this.props;
     const isHome = location.pathname === prefixLink('/');
@@ -16,7 +17,7 @@ class SiteSidebar extends React.Component {
     const header = (
       <header>
         <Link style={{ textDecoration: 'none', borderBottom: 'none', outline: 'none' }} to={prefixLink('/')}>
-          <img src={prefixLink(avatarPic)} width="75" height="75" role="presentation" />
+          <img src={avatarPic} width="75" height="75" role="presentation" />
         </Link>
         { isHome ? (
           <h1>
@@ -45,10 +46,10 @@ class SiteSidebar extends React.Component {
             </header>
           </div>
           <div className="blog-options">
-            <SiteNav {...this.props} />
+            <SideBarNav {...this.props} />
             <footer>
-              <SiteLinks {...this.props} />
-              <SiteFooter />
+              <SideBarLinks {...this.props} />
+              <SideBarFooter />
             </footer>
           </div>
         </div>
@@ -58,8 +59,8 @@ class SiteSidebar extends React.Component {
 }
 
 SiteSidebar.propTypes = {
-  children: React.PropTypes.any,
-  location: React.PropTypes.object,
+  children: PropTypes.any,
+  location: PropTypes.object,
 };
 
 export default SiteSidebar;

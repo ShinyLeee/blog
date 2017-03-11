@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import moment from 'moment';
 import { Link } from 'react-router';
 import { prefixLink } from 'gatsby-helpers'; // eslint-disable-line
@@ -7,13 +7,13 @@ import ReadNext from '../ReadNext';
 import './style.css';
 import '../../static/css/highlight.css';
 
-class SitePost extends React.Component {
+class SitePost extends Component {
   render() {
     const { route } = this.props;
     const post = route.page.data;
     const home = (
       <div>
-        <Link className="gohome" to={prefixLink('/')}> All Articles</Link>
+        <Link className="gohome" to={prefixLink('/')}> 所有文章</Link>
       </div>
     );
 
@@ -25,7 +25,7 @@ class SitePost extends React.Component {
             <h1>{ post.title }</h1>
             <div dangerouslySetInnerHTML={{ __html: post.body }} />
             <div className="date-published">
-              <em>Published { moment(post.date).format('D MMM YYYY') }</em>
+              <em>{ moment(post.date).format('YYYY/MM/DD') }</em>
             </div>
           </div>
           <div className="footer">
@@ -44,7 +44,7 @@ class SitePost extends React.Component {
 }
 
 SitePost.propTypes = {
-  route: React.PropTypes.object.isRequired,
+  route: PropTypes.object.isRequired,
 };
 
 export default SitePost;

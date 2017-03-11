@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import sortBy from 'lodash/sortBy';
 import moment from 'moment';
@@ -6,9 +6,9 @@ import Helmet from 'react-helmet';
 import access from 'safe-access';
 import { prefixLink } from 'gatsby-helpers'; // eslint-disable-line
 import { config } from 'config'; // eslint-disable-line
-import SiteSidebar from '../components/SiteSidebar';
+import SideBar from '../components/SideBar';
 
-class SiteIndex extends React.Component {
+class SiteIndex extends Component {
 
   render() {
     const { route } = this.props;
@@ -32,7 +32,7 @@ class SiteIndex extends React.Component {
             <span className="blog-category">{ category }</span>
             <h2><Link style={{ borderBottom: 'none' }} to={prefixLink(page.path)} > { title } </Link></h2>
             <p dangerouslySetInnerHTML={{ __html: description }} />
-            <Link className="readmore" to={prefixLink(page.path)}> Read</Link>
+            <Link className="readmore" to={prefixLink(page.path)}>阅读</Link>
           </div>,
         );
       }
@@ -41,7 +41,7 @@ class SiteIndex extends React.Component {
     return (
       <div>
         <Helmet title={config.siteTitle} />
-        <SiteSidebar {...this.props} />
+        <SideBar {...this.props} />
         <div className="content">
           <div className="main">
             <div className="main-inner">
@@ -55,7 +55,7 @@ class SiteIndex extends React.Component {
 }
 
 SiteIndex.propTypes = {
-  route: React.PropTypes.object,
+  route: PropTypes.object,
 };
 
 export default SiteIndex;

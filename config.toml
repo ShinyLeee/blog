@@ -6,7 +6,7 @@ siteTwitterUrl = "https://twitter.com/shinylee007"
 siteGithubUrl = "https://github.com/ShinyLeee"
 siteEmailUrl = "lshinylee007@gmail.com"
 
-googleAnalyticsId = ""
+googleAnalyticsId = "UA-93455154-1"
 
 # use for depolying to Production environment
 linkPrefix = "/blog"

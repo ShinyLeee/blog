@@ -69,6 +69,9 @@
 	line-height: 31px;
 	margin-bottom: 31px;
 }
+.date-published {
+	text-align: right;
+}
 .gohome {
 	position: fixed;
 	left: 20px;
