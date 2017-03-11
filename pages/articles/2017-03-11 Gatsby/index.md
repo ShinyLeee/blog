@@ -1,6 +1,6 @@
 ---
 title: "Gatsby的简单使用"
-date: "2016-03-01T22:12:03.284Z"
+date: "2017-03-11T14:07:32.306Z"
 layout: post
 path: "/articles/2017-03-01/"
 category: "前端"
