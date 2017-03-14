@@ -23,10 +23,12 @@ class SiteIndex extends Component {
         const datePublished = access(page, 'data.date');
         const category = access(page, 'data.category');
 
+        const dateTime = moment(datePublished).format('YYYY/MM/DD');
+
         pageLinks.push(
           <div className="blog-post" key={title}>
-            <time dateTime={moment(datePublished).format('MMMM D, YYYY')}>
-              { moment(datePublished).format('MMMM YYYY') }
+            <time dateTime={dateTime}>
+              { dateTime }
             </time>
             <span style={{ padding: '5px' }} />
             <span className="blog-category">{ category }</span>

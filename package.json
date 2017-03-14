@@ -4,7 +4,7 @@
   "description": "Personal blog built by Gatsby with lumen starter",
   "main": "n/a",
   "scripts": {
-    "develop": "gatsby develop",
+    "start": "gatsby develop",
     "build": "gatsby build",
     "clean:public": "rm -rf public && rm -rf node_modules/gh-pages/.cache",
     "clean": "npm run clean:public",
