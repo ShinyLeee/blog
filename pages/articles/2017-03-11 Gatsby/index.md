@@ -50,7 +50,7 @@ description: "使用基于React的Gatsby构建静态页面博客并部署到Gith
 
 - 运行`gatsby build --prefix-links && gh-pages -d public`或直接`yarn run deploy`。
 
-- 然后打开yourUsername/github.io/yourProjectName/会发现部署完成。
+- 然后打开yourUsername/github.io/yourProjectName/可以发现部署成功。
 
 - 当然也可以把开发版本push到该项目的另一个branch中去方便管理。
 
@@ -66,7 +66,7 @@ description: "使用基于React的Gatsby构建静态页面博客并部署到Gith
 
 - *CONS：*
 
-  - 暂无官网，文档够不齐全
+  - 暂无官网，文档不够齐全
 
   - 可供选择的Starter不够多
 

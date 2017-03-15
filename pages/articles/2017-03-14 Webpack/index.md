@@ -11,7 +11,7 @@ description: "从零开始搭建基于Babel及Webpack2可热加载的React组件
 
 *因为准备开源几个在之前[项目](https://github.com/ShinyLeee/meteor-album-app)中经常使用到的React组件的缘故，这两天开始了学习如何使用Babel以及Webpack搭建一个方便的开发环境。*
 
-*一开始的时候其实本来是想使用[Yeoman](https://github.com/yeoman/yeoman)的一些脚手架来快速搭建的，在其中我尝试了[React-CDK](https://github.com/kadirahq/react-cdk)，它是基于[React-Storybook](https://github.com/storybooks/react-storybook)开发环境的。经过尝试这确实是一个非常方便的 **UI组件开发环境** 。但因为我所想开源的是功能型的组件并且是面向移动端的，另外在React-Storybook的开发环境中嵌入一个移动端模拟器可能比较麻烦。最终也为了系统点地了解如何使用Babel和Webpack，以方便理解各个开源项目的构建方式，就开始了从零开始的开发环境搭建。*
+*一开始的时候其实本来是想使用[Yeoman](https://github.com/yeoman/yeoman)的一些脚手架来快速搭建的，在其中我尝试了[React-CDK](https://github.com/kadirahq/react-cdk)，它是基于[React-Storybook](https://github.com/storybooks/react-storybook)开发环境的。经过尝试这确实是一个非常方便的 **UI组件开发环境** 。但因为我所想开源的是面向移动端功能型的组件，另外在React-Storybook的开发环境中嵌入一个移动端模拟器可能比较麻烦。最终也为了系统点地了解如何使用Babel和Webpack，以方便理解各个开源项目的构建方式，就开始了从零开始的开发环境搭建。*
 
 ---
 
@@ -22,28 +22,23 @@ description: "从零开始搭建基于Babel及Webpack2可热加载的React组件
 以下是初步搭建后的目录结构:
 
 ```
-├── dist                      // 经Babel转换后的组件代码
-│   └── index.js
-├── example                   // 方便调试的示例
-│   ├── img
-│   │   ├── 1.jpg
-│   │   ├── 2.jpg
-│   │   ├── 3.jpg
-│   │   ├── 4.jpg
-│   │   └── 5.jpg
-│   ├── js                    // 打包后的脚本文件
-│   │   └── bundle.min.js
+├── dist                       // 组件输出文件夹
+├── example
+│   ├── components
+│   │   ├── App.js
+│   ├── js                    // 示例输出文件夹
+│   │   ├── bundle.min.js
 │   ├── pages                 // 单页页面组件
 │   │   ├── Home.js
 │   │   └── NotFound.js
-│   ├── App.js                // RootApp
-│   ├── index.html
-│   ├── index.js              // 入口文件
+│   ├── index.js              // 示例入口文件
+│   ├── index.html     
+│   ├── Root.js               // 根组件
 │   └── routes.js             // React-Router路由配置
-├── src                       // 组件源代码
-│   └── index.js
-├── test                      // 放置测试文件
-│   └── index.js
+├── src                      
+│   └── index.js              // 组件源码
+├── test                      
+│   └── index.js              // 测试文件
 ├── .babelrc
 ├── .eslintignore
 ├── .eslintrc
@@ -57,22 +52,22 @@ description: "从零开始搭建基于Babel及Webpack2可热加载的React组件
 └── yarn.lock
 ```
 
-> 一般开源的React组件项目结构一般都跟上面的大同小异，其中略微的差别根据自己的喜好所定
+> 一般开源的React组件项目结构一般都跟上面的大同小异，其中文件夹的命名可根据自己的喜好所定。
 
 **2. 安装相关NPM模块**
 
 以下是最终开发环境下安装的所有依赖:
 
-其中大部分依赖是必不可少的，当然也有些可自行选择，比如下面我并没有选择安装babel-polyfill或者babel-runtime，因为预计开发该组件用不到Promise等特性，还有测试框架也可以选择其他的。
+其中大部分依赖是必不可少的，当然也有些可自行选择，比如下面我并没有选择安装babel-polyfill或者babel-runtime，因为预计开发该组件用不到Promise等特性，还有测试框架也可以选择Jest或其他。
 
 ```
   "devDependencies": {
-    "babel-cli": "^6.23.0",              // Babel命令行
+    "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",
     "babel-eslint": "^7.1.1",
-    "babel-loader": "^6.4.0",           // 用于Webpack
-    "babel-preset-es2015": "^6.24.0",   // es2015转码规则
-    "babel-preset-react": "^6.23.0",    // React^...
+    "babel-loader": "^6.4.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
     "chai": "^3.5.0",
     "enzyme": "^2.7.1",
     "eslint": "^3.17.1",
@@ -148,7 +143,7 @@ description: "从零开始搭建基于Babel及Webpack2可热加载的React组件
 
 如果只是写一个组件的话其实用不到Webpack，我们只需要把组件用Babel转码为兼容代码就可以发布了。不过一个demo还是非常必要的，因为开发环境是非常需要一个demo来进行组件的调试的。
 
-Webpack的配置相对来说是比较复杂的，但是真的非常庆幸[Webpack2的文档](https://webpack.js.org/configuration/)非常地齐全和有条理，真是开源的魅力。
+Webpack的配置相对来说比较复杂，但是真的非常感谢[Webpack2的文档](https://webpack.js.org/configuration/)非常地齐全。
 
 **.webpack.config.js**
 
@@ -165,7 +160,7 @@ module.exports = {
     publicPath: '/js'
   },
   module: {
-    loaders: [              // 使用babel-loader以给定规则转码
+    loaders: [              // 使用babel以给定规则转码
       {
         test: /\.js$/,
         loader: 'babel-loader',
@@ -177,7 +172,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx']      // 引入无须添加后缀
+    extensions: ['.js', '.jsx']      // import无须添加后缀
   },
   devServer: {                       // 配置开发服务器
     contentBase: path.resolve(__dirname, 'example'),
@@ -188,15 +183,15 @@ module.exports = {
 };
 ```
 
-> 开发环境下的Webpack配置也是差不多，其中配置了DefinePlugin和UglifyJsPlugin，其余一些常用的[Webpack内置插件](https://github.com/webpack/docs/wiki/list-of-plugins)可以根据自己的需要选用。
+> 开发环境下的Webpack配置也是差不多，我在其中配置了DefinePlugin和UglifyJsPlugin，其余一些常用的[Webpack内置插件](https://github.com/webpack/docs/wiki/list-of-plugins)可以根据自己的需要选用。
 
 **6. 实现React组件热加载**
 
-通过前五步步骤，其实已经可以在命令行里输入yarn start开始常规的开发了，但是有更加方便的热加载工具[React-Hot-Loader](https://github.com/gaearon/react-hot-loader)，有什么理由不用呢？
+经过前五步，其实已经可以在命令行里输入yarn start开始常规的开发了，但是有更加方便的热加载工具[React-Hot-Loader](https://github.com/gaearon/react-hot-loader)，有什么理由不用呢？
 
 在这里我选择安装目前的最新版本[v3.0.0-beta.6]，它的配置会比之前的版本方便很多。它的配置可以查看一些[Starter-Kit](https://github.com/gaearon/react-hot-loader/tree/master/docs#starter-kits)，也可以阅读Webpack的[指南](https://webpack.js.org/guides/hmr-react/)。
 
-### 步骤：
+### 以下是我的步骤：
 
 - **修改.babelrc**
 
@@ -277,20 +272,20 @@ module.exports = {
 };
 ```
 
-- **example/index.js**
+- **修改example/index.js**
 
 ```
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-// AppContainer is a necessary wrapper component for HMR
 
+import Root from './Root';
 import routes from './routes';
 
-const render = (RouteComponent) => {
+const render = (AppRoute) => {
   ReactDOM.render(
     <AppContainer>
-      <RouteComponent />
+      <Root routes={AppRoute} />
     </AppContainer>,
     document.getElementById('app'),
   );
@@ -301,13 +296,75 @@ render(routes);
 // Hot Module Replacement API
 if (module.hot) {
   module.hot.accept('./routes', () => {
-    const newRoutes = require('./routes').default;
+    const newRoutes = require('./routes').default; // eslint-disable-line global-require
     render(newRoutes);
   });
 }
 ```
 
-> OK，运行yarn start或npm start可以进行快速开发了。
+- **修改example/Root.js**
+```
+/* eslint-disable react/prefer-stateless-function */
+import React, { Component, PropTypes } from 'react';
+import { Router, hashHistory } from 'react-router';
+
+export default class Root extends Component {
+  render() {
+    return (
+      <Router history={hashHistory}>
+        {this.props.routes()}
+      </Router>
+    );
+  }
+}
+
+Root.propTypes = {
+  routes: PropTypes.func.isRequired,
+};
+```
+
+- **修改example/routes.js**
+
+```
+import React from 'react';
+import { IndexRoute, Route } from 'react-router';
+
+import App from './components/App';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
+
+const routes = () => (
+  <Route path="/" component={App}>
+    <IndexRoute component={Home} />
+    <Route path="*" component={NotFound} />
+  </Route>
+);
+
+export default routes;
+```
+
+最后测试修改路由里的App组件可以发现，我们已经成功实现了热加载，但是仍然存在以下问题，React-Router会报错**You cannot change... it will be ignored**。
+
+<figure>
+	<img src="./hot-loader.jpeg" alt="hot-loader">
+	<figcaption>React-Router报错</figcaption>
+</figure>
+
+报错的原因是因为我们通过热加载Re render了Router组件而传递进去的routes属性却没有变化，具体可以看[Router源码](https://github.com/ReactTraining/react-router/blob/6eeb7ad358f987520f5b519e48bdd31f725cbade/modules/Router.js#L117)，虽然这个问题对开发影响不大，但是反复的报错会让人很不舒服，因此社区也给出了许多[解决方案](https://github.com/ReactTraining/react-router/issues/2704)。
+
+而我所选择的是为Root组件添加key属性，当需要热加载时reconcile出一个新的Root实例即可。
+`<Root key={module.hot ? Math.random() : undefined} routes={AppRoute} />`
+
+现在我们再试着修改一次App组件，可以发现问题已经解决。
+
+<figure>
+	<img src="./hot-loader2.jpeg" alt="hot-loader">
+	<figcaption>控制台信息</figcaption>
+</figure>
+
+## 总结
+
+这一系列的配置过程下来还是比较麻烦的，而开源其他不同类型的项目配置的过程又有所不同，因此如果不是出于学习Webpack的缘故的话还是直接使用Yeoman找一些成熟的generator比较方便。
 
 ## 参考链接
 

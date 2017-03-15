@@ -13,7 +13,7 @@ class SiteIndex extends Component {
   render() {
     const { route } = this.props;
     const pageLinks = [];
-        // Sort pages.
+    // Sort pages.
     const sortedPages = sortBy(route.pages, page => access(page, 'data.date')).reverse();
 
     sortedPages.forEach((page) => {

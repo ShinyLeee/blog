@@ -83,15 +83,32 @@
 	font-weight: 400;
 	border-radius: 3px;
 }
-.gohome:focus {
+.backTop {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	font-size: 16px;
+	text-align: center;
+	padding: 8px 16px;
+	color: #999;
+	background: #f4f4f4;
+	font-weight: 400;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.gohome:focus, .backTop:focus {
 	color: #444;
 	background: #f4f4f4;
 	border: 0;
 }
-.gohome:hover {
+.gohome:hover, .backTop:hover {
 	color: #444;
 	background: #f4f4f4;
 	border: 0;
+}
+.backTop:active, .backTop:visited, .backTop:link {
+	border: none;
 }
 @media (max-width:900px) {
 	.blog-single h1 {
