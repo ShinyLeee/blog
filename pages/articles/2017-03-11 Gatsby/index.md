@@ -37,7 +37,7 @@ description: "使用基于React的Gatsby构建静态页面博客并部署到Gith
 
 3. **部署前准备**
 
-- 更改config.toml中的所需要用到的配置项，此文件中设置的变量可以通过require或import config引入。
+- 更改config.toml中的所需要用到的配置项，此文件中设置的变量可直接通过require或import 'config'引入。
 
 - 删除不必要的文件，如travis.yml以及/pages/articles/中的文章等。
 
@@ -50,7 +50,7 @@ description: "使用基于React的Gatsby构建静态页面博客并部署到Gith
 
 - 运行`gatsby build --prefix-links && gh-pages -d public`或直接`yarn run deploy`。
 
-- 然后打开yourUsername/github.io/yourProjectName/可以发现部署成功。
+- 然后打开yourUsername/github.io/yourProjectName/可以发现部署已成功。
 
 - 当然也可以把开发版本push到该项目的另一个branch中去方便管理。
 
@@ -70,7 +70,7 @@ description: "使用基于React的Gatsby构建静态页面博客并部署到Gith
 
   - 可供选择的Starter不够多
 
-  - 添加或删除文件并不会触发热加载，需要重新输入`gatsby develop` [[Help Wanted]](https://github.com/webpack/webpack/issues/1162)
+  - 添加或删除文件暂不支持热加载，需要重新运行`gatsby develop` [[Help Wanted]](https://github.com/webpack/webpack/issues/1162)
 
 ## 参考链接
 

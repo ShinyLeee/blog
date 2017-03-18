@@ -85,7 +85,7 @@ description: "从零开始搭建基于Babel及Webpack2可热加载的React组件
   },
 ```
 
-> 虽说Babel在版本6以后刚入门时会不太容易使用，但是它的可配置性确实是更加适应前端的发展。ESLint和Webpack也是如此，其实用过以后发现了解了其中一个的大致配置方法，其余工具的配置也是相差不大。
+> 虽说Babel6不太容易入门，但是它的可配置性确实是更加适应前端的发展。ESLint和Webpack也是如此，其实了解了其中一个的大致配置方法，其余工具的配置也是相差不大。
 
 **3. 配置ESLint**
 
@@ -141,9 +141,9 @@ description: "从零开始搭建基于Babel及Webpack2可热加载的React组件
 
 **5. 配置Webpack**
 
-如果只是写一个组件的话其实用不到Webpack，我们只需要把组件用Babel转码为兼容代码就可以发布了。不过一个demo还是非常必要的，因为开发环境是非常需要一个demo来进行组件的调试的。
+如果只是写一个组件的话其实用不到Webpack，我们只需要把组件用Babel转码为兼容代码就可以发布了。不过一个demo还是相当有必要的，因为开发环境需要一个demo来进行组件的调试。
 
-Webpack的配置相对来说比较复杂，但是真的非常感谢[Webpack2的文档](https://webpack.js.org/configuration/)非常地齐全。
+Webpack的配置相对来说比较复杂，但是齐全的[Webpack2的文档](https://webpack.js.org/configuration/)帮助我减少了不少的配置时间。
 
 **.webpack.config.js**
 
@@ -352,7 +352,8 @@ export default routes;
 
 报错的原因是因为我们通过热加载Re render了Router组件而传递进去的routes属性却没有变化，具体可以看[Router源码](https://github.com/ReactTraining/react-router/blob/6eeb7ad358f987520f5b519e48bdd31f725cbade/modules/Router.js#L117)，虽然这个问题对开发影响不大，但是反复的报错会让人很不舒服，因此社区也给出了许多[解决方案](https://github.com/ReactTraining/react-router/issues/2704)。
 
-而我所选择的是为Root组件添加key属性，当需要热加载时reconcile出一个新的Root实例即可。
+而我所选择的解决方案则是为Root组件添加key属性，当需要热加载时reconcile出一个新的Root实例即可。
+
 `<Root key={module.hot ? Math.random() : undefined} routes={AppRoute} />`
 
 现在我们再试着修改一次App组件，可以发现问题已经解决。
@@ -364,7 +365,7 @@ export default routes;
 
 ## 总结
 
-这一系列的配置过程下来还是比较麻烦的，而开源其他不同类型的项目配置的过程又有所不同，因此如果不是出于学习Webpack的缘故的话还是直接使用Yeoman找一些成熟的generator比较方便。
+这一系列的配置过程下来还是比较麻烦的，而开源其他不同类型的项目配置的过程又有所不同，因此如果不是出于学习Webpack的缘故的话还是直接通过Yeoman找一些成熟的generator比较方便。
 
 ## 参考链接
 
