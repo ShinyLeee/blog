@@ -9,7 +9,7 @@ description: "使用基于React的Gatsby构建静态页面博客并部署到Gith
 
 ## 前言
 
-*一年前的这个时候，为了练练手搞了一个[博客项目](https://github.com/ShinyLeee/shinyBlog)，不过一直以来都没有用过，因为动态的博客写起来并不是很方便，因此这几天又通过[Gatsby](https://github.com/gatsbyjs/gatsby)搭建了一个简单静态博客。*
+一年前的这个时候，为了练练手搞了一个[博客项目](https://github.com/ShinyLeee/shinyBlog)，不过一直以来都没有用过，因为动态的博客写起来并不是很方便，因此这几天又通过[Gatsby](https://github.com/gatsbyjs/gatsby)搭建了一个简单静态博客。
 
 ---
 

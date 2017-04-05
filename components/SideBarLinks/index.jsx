@@ -8,14 +8,14 @@ const SiteLinks = () => (
     <ul>
       {config.siteTwitterUrl && (
         <li>
-          <a href={config.siteTwitterUrl}>
+          <a href={config.siteTwitterUrl} target="_blank" rel="noopener noreferrer">
             <i className="fa fa-twitter" />
           </a>
         </li>
       )}
       {config.siteGithubUrl && (
         <li>
-          <a href={config.siteGithubUrl}>
+          <a href={config.siteGithubUrl} target="_blank" rel="noopener noreferrer">
             <i className="fa fa-github-alt" />
           </a>
         </li>

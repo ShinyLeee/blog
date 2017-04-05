@@ -11,6 +11,8 @@ description: "以组件为中心的Code Splitting及在React中进行动态加�
 
 当你拥有一个大型Web应用时，将所有的代码压缩成单个bundle文件的做法会影响该应用的首次加载时间。因此你可能需要将你的应用拆分成多个bundle文件，再对它们进行按需加载。
 
+---
+
 <figure>
 	<img src="./singleVSmultiple.png" alt="singleVSmultiple">
 	<figcaption>单个大文件 vs 拆分后的多个小文件</figcaption>

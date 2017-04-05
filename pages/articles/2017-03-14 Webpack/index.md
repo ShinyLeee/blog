@@ -9,9 +9,9 @@ description: "从零开始搭建基于Babel及Webpack2可热加载的React组件
 
 ## 前言
 
-*因为准备开源几个在之前[项目](https://github.com/ShinyLeee/meteor-album-app)中经常使用到的React组件的缘故，这两天开始了学习如何使用Babel以及Webpack搭建一个方便的开发环境。*
+因为准备开源几个在之前[项目](https://github.com/ShinyLeee/meteor-album-app)中经常使用到的React组件的缘故，这两天开始了学习如何使用Babel以及Webpack搭建一个方便的开发环境。
 
-*一开始的时候其实本来是想使用[Yeoman](https://github.com/yeoman/yeoman)的一些脚手架来快速搭建的，在其中我尝试了[React-CDK](https://github.com/kadirahq/react-cdk)，它是基于[React-Storybook](https://github.com/storybooks/react-storybook)开发环境的。经过尝试这确实是一个非常方便的 **UI组件开发环境** 。但因为我所想开源的是面向移动端功能型的组件，另外在React-Storybook的开发环境中嵌入一个移动端模拟器可能比较麻烦。最终也为了系统点地了解如何使用Babel和Webpack，以方便理解各个开源项目的构建方式，就开始了从零开始的开发环境搭建。*
+一开始的时候其实本来是想使用[Yeoman](https://github.com/yeoman/yeoman)的一些脚手架来快速搭建的，在其中我尝试了[React-CDK](https://github.com/kadirahq/react-cdk)，它是基于[React-Storybook](https://github.com/storybooks/react-storybook)开发环境的。经过尝试这确实是一个非常方便的 **UI组件开发环境** 。但因为我所想开源的是面向移动端功能型的组件，另外在React-Storybook的开发环境中嵌入一个移动端模拟器可能比较麻烦。最终也为了系统点地了解如何使用Babel和Webpack，以方便理解各个开源项目的构建方式，就开始了从零开始的开发环境搭建。
 
 ---
 
